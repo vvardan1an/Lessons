@@ -22,7 +22,6 @@ public class ArrayUtil {
             if (i > max) {
                 max = i;
             }
-            ;
             if (i < min) {
                 min = i;
             }
@@ -32,25 +31,24 @@ public class ArrayUtil {
 
         //PrintEvenNumbers
 
-        int even = 0;
+        int num = 0;
         System.out.print("Even numbers: ");
 
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0) {
-                even = array[i];
-                System.out.print(even + " ");
+                num = array[i];
+                System.out.print(num + " ");
             }
         }
         System.out.println();
 
         //PrintOddNumbers
 
-        int odd = 0;
         System.out.print("Odd numbers: ");
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 != 0) {
-                odd = array[i];
-                System.out.print(odd + " ");
+                num = array[i];
+                System.out.print(num + " ");
             }
         }
         System.out.println();
@@ -86,9 +84,9 @@ public class ArrayUtil {
 
         //AverageArray
 
-        int average = 0;
+        double average = 0;
         for (int i = 0; i < array.length; i++) {
-            average = sum / array.length;
+            average = (double) sum / array.length;
         }
         System.out.println("Average: " + average);
     }
