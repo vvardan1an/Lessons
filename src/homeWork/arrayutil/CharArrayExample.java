@@ -20,12 +20,9 @@ public class CharArrayExample {
 
         char[] chars2 = {'j', 'a', 'v', 'a', 'l', 'o', 'v', 'e'};
 
-        int startIndex = (chars2.length / 2) - 1;
-        int lastIndex = chars2.length / 2;
-
         System.out.print("Middle 2 elements: ");
 
-        for (int i = startIndex; i <= lastIndex; i++) {
+        for (int i = (chars2.length / 2) - 1; i <= chars2.length / 2; i++) {
             System.out.print(chars2[i]);
         }
         System.out.println();
@@ -42,7 +39,7 @@ public class CharArrayExample {
 
         // 4) Տպում ենք true եթե տեքստը պարունակում է bob բառը, բայց o-ի տեղը կարող է լինել ցանկացած սինվոլ։
 
-        char[] bobArray = {'b', 'o', 'b', 'b', 'c', 'l'};
+        char[] bobArray = {'o', 'b', 'c', 'l', 'c', 'l'};
 
         boolean bob = false;
 
@@ -51,7 +48,8 @@ public class CharArrayExample {
                 if (bobArray[i] == 'b' && bobArray[i + 2] == 'b') {
                     System.out.println("Is true: " + true);
                     break;
-                } else System.out.println("Is false: " + false);
+                }else System.out.println("Is false: " + false);
+
             }
         }
 
