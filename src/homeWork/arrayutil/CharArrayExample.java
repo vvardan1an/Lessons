@@ -35,21 +35,24 @@ public class CharArrayExample {
 
         if (chars3[chars3.length - 2] == 'l' && chars3[chars3.length - 1] == 'y') {
             System.out.println("Is end <l,y> : " + true);
-        } else System.out.println("Is false: " + false);
+        } else {
+            System.out.println("Is false: " + false);
+        }
 
         // 4) Տպում ենք true եթե տեքստը պարունակում է bob բառը, բայց o-ի տեղը կարող է լինել ցանկացած սինվոլ։
 
-        char[] bobArray = {'o', 'b', 'c', 'l', 'c', 'l'};
+        char[] bobArray = {'b', 'l', 'b', 'p', 'b', 'd'};
 
         boolean bob = false;
 
-        for (int i = 0; i < bobArray.length; i++) {
+        for (int i = 0; i < bobArray.length-2; i++) {
             if (bobArray[i] == 'b') {
                 if (bobArray[i] == 'b' && bobArray[i + 2] == 'b') {
                     System.out.println("Is true: " + true);
                     break;
-                }else System.out.println("Is false: " + false);
-
+                }else {
+                    System.out.println("Is false: " + false);
+                }
             }
         }
 
