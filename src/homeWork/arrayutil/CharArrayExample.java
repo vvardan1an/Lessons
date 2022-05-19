@@ -20,9 +20,12 @@ public class CharArrayExample {
 
         char[] chars2 = {'j', 'a', 'v', 'a', 'l', 'o', 'v', 'e'};
 
+        int startIndex = (chars2.length / 2) - 1;
+        int lastIndex = chars2.length / 2;
+
         System.out.print("Middle 2 elements: ");
 
-        for (int i = (chars2.length / 2) - 1; i <= chars2.length / 2; i++) {
+        for (int i = startIndex; i <= lastIndex; i++) {
             System.out.print(chars2[i]);
         }
         System.out.println();
