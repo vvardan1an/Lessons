@@ -22,9 +22,8 @@ public class CharArrayExample {
 
         System.out.print("Middle 2 elements: ");
 
-        for (int i = (chars2.length / 2) - 1; i <= chars2.length / 2; i++) {
-            System.out.print(chars2[i]);
-        }
+        System.out.print(chars2[chars2.length/2] + " " + chars2[chars2.length/2-1]);
+
         System.out.println();
 
         //3) True եթե մեր մասիվը վերջանում է ly-ով, եթե ոչ՝ False
