@@ -42,7 +42,7 @@ public class CharArrayExample {
 
         // 4) Տպում ենք true եթե տեքստը պարունակում է bob բառը, բայց o-ի տեղը կարող է լինել ցանկացած սինվոլ։
 
-        char[] bobArray = {'l', 'o', 'm', 'b', 'o', 'b'};
+        char[] bobArray = {'b', 'o', 'b', 'b', 'c', 'l'};
 
         boolean bob = false;
 
