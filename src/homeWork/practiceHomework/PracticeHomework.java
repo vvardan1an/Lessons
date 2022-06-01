@@ -15,16 +15,16 @@ public class PracticeHomework {
     }
 
     boolean isSameNum(int a, int b) {
-        return (a == b) ? true : false;
+        return a==b;
 
     }
 
     boolean lessThanOrEqualToZero(int number) {
-        return number <= 0 ? true : false;
+        return number <= 0 ;
     }
 
     boolean reverseBool(boolean value) {
-        return value != true ? true : false;
+        return value != true;
     }
 
     int maxLength(int[] array1, int[] array2) {
