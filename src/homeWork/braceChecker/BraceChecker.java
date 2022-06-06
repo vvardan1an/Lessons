@@ -19,22 +19,25 @@ public class BraceChecker {
                     stack.push(c);
                     break;
                 case ')':
-                    if (stack.pop() != '(') {
-                        showError( stack.pop(), text.charAt(i));
+                    char check = stack.pop();
+                    if (check != '(') {
+                        showError( check, text.charAt(i));
                         System.out.print("at " + i);
                         return;
                     }
                     break;
                 case '}':
-                    if (stack.pop() != '{') {
-                        showError(stack.pop(), text.charAt(i));
+                    char check1 = stack.pop();
+                    if (check1 != '{') {
+                        showError(check1, text.charAt(i));
                         System.out.print("at " + i);
                         return;
                     }
                     break;
                 case ']':
-                    if (stack.pop() != '[') {
-                        showError( stack.pop(), text.charAt(i));
+                    char check2 = stack.pop();
+                    if (check2 != '[') {
+                        showError( check2, text.charAt(i));
                         System.out.print(" at " + i);
                         return;
                     }
