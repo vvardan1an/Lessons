@@ -43,16 +43,14 @@ public class BraceChecker {
         }
     }
 
-    public void checkOnlyOpen() {
-        for (int i = 0; i < stack.pop(); i++) {
-            showError(text.charAt(i));
-        }
-    }
-
-    public void checkOnlyClose() {
-        for (int k = 0; k < stack.pop(); k++) {
-            showErrorMessage(stack.pop());
-
+    public char checkOnlyOpen() {
+        while (true) {
+            char c = stack.pop();
+            if (c == 0) {
+                return 0;
+            } else {
+                showError(c);
+            }
         }
     }
 
