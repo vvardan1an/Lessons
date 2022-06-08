@@ -20,6 +20,10 @@ public class BraceChecker {
                     break;
                 case ')':
                     char pop = stack.pop();
+                    if (pop == 0) {
+                        showErrorMessage(c);
+                        break;
+                    }
                     if (pop != '(') {
                         showError(pop, text.charAt(i));
                         System.out.println("at " + i);
@@ -27,6 +31,10 @@ public class BraceChecker {
                     break;
                 case '}':
                     char pop1 = stack.pop();
+                    if (pop1 == 0) {
+                        showErrorMessage(c);
+                        break;
+                    }
                     if (pop1 != '{') {
                         showError(pop1, text.charAt(i));
                         System.out.println("at " + i);
@@ -34,6 +42,10 @@ public class BraceChecker {
                     break;
                 case ']':
                     char pop2 = stack.pop();
+                    if (pop2 == 0) {
+                        showErrorMessage(c);
+                        break;
+                    }
                     if (pop2 != '[') {
                         showError(pop2, text.charAt(i));
                         System.out.println(" at " + i);
@@ -44,15 +56,13 @@ public class BraceChecker {
     }
 
     public void checkOnlyOpen() {
-        for (int i = 0; i < stack.pop(); i++) {
-            showError(text.charAt(i));
-        }
-    }
-
-    public void checkOnlyClose() {
-        for (int k = 0; k < stack.pop(); k++) {
-            showErrorMessage(stack.pop());
-
+        while (true) {
+            char c = stack.pop();
+            if (c == 0) {
+                return;
+            } else {
+                showError(c);
+            }
         }
     }
 
