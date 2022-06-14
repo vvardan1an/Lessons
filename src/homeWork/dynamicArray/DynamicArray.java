@@ -78,7 +78,7 @@ public class DynamicArray {
     public void delete(int index) {
         if (index < size && index >= 0) {
             for (int i = index; i < size - 1; i++) {
-                array[index] = array[index + 1];
+                array[i] = array[i + 1];
             }
             size--;
         }

@@ -18,7 +18,7 @@ public class DynamicArrayDemo {
         dynamicArray.printArray();
         //dynamicArray.set(0,100);
         dynamicArray.add(4,23);
-        System.out.println(dynamicArray.isEmpty());
+        dynamicArray.delete(5);
 
     }
 
