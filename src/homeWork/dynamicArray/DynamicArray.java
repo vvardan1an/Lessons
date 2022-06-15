@@ -34,10 +34,7 @@ public class DynamicArray {
     }
 
     public boolean isEmpty() {
-        if (size == 0) {
-            return true;
-        }
-        return false;
+        return size == 0;
     }
 
     public int getByIndex(int index) {
@@ -48,19 +45,18 @@ public class DynamicArray {
     }
 
     public int getFirstIndexByValue(int value) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == value)
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
                 return i;
+            }
         }
-        return value;
+        return -1;
     }
 
     public void set(int index, int value) {
         if (index < size && index >= 0) {
             array[index] = value;
         }
-        System.out.println();
-        printArray();
     }
 
     public void add(int index, int value) {
@@ -71,8 +67,6 @@ public class DynamicArray {
             }
             array[index] = value;
         }
-        System.out.println();
-        printArray();
     }
 
     public void delete(int index) {
@@ -82,8 +76,6 @@ public class DynamicArray {
             }
             size--;
         }
-        System.out.println();
-        printArray();
     }
 }
 

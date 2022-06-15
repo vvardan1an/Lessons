@@ -1,7 +1,5 @@
 package homeWork.dynamicArray;
 
-import java.util.ArrayList;
-
 public class DynamicArrayDemo {
 
     public static void main(String[] args) {
@@ -13,12 +11,17 @@ public class DynamicArrayDemo {
         dynamicArray.add(15);
         dynamicArray.printArray();
         System.out.println();
-        System.out.println(dynamicArray.getByIndex(2));
-        System.out.println(dynamicArray.getFirstIndexByValue(4));
+        System.out.println(dynamicArray.isEmpty());
+        System.out.println(dynamicArray.getByIndex(0));
+        System.out.println(dynamicArray.getFirstIndexByValue(16));
+        dynamicArray.set(0,18);
         dynamicArray.printArray();
-        //dynamicArray.set(0,100);
-        dynamicArray.add(4,23);
-        dynamicArray.delete(5);
+        dynamicArray.add(1,40);
+        System.out.println();
+        dynamicArray.printArray();
+        System.out.println();
+        dynamicArray.delete(4);
+        dynamicArray.printArray();
 
     }
 
