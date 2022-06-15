@@ -12,7 +12,7 @@ public class DynamicArrayDemo {
         dynamicArray.printArray();
         System.out.println();
         System.out.println(dynamicArray.isEmpty());
-        System.out.println(dynamicArray.getByIndex(0));
+        System.out.println(dynamicArray.getByIndex(10));
         System.out.println(dynamicArray.getFirstIndexByValue(16));
         dynamicArray.set(0,18);
         dynamicArray.printArray();

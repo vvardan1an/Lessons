@@ -41,7 +41,7 @@ public class DynamicArray {
         if (index >= 0 && index < size) {
             return array[index];
         }
-        return 0;
+        return -1;
     }
 
     public int getFirstIndexByValue(int value) {
