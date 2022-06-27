@@ -37,7 +37,6 @@ public class BookDemo implements CommandBook {
                 default:
                     System.out.println("Invalid command");
                     break;
-
             }
         }
     }

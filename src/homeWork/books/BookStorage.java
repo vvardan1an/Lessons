@@ -51,8 +51,6 @@ public class BookStorage {
         for (int i = 0; i < size; i++) {
             if (array[i].getAuthorName().equals(authorName)) {
                 System.out.println(array[i]);
-            } else {
-                System.out.println("Invalid genre.Please try again");
             }
         }
     }
@@ -61,8 +59,6 @@ public class BookStorage {
         for (int i = 0; i < size; i++) {
             if (array[i].getGenre().equals(genre)) {
                 System.out.println(array[i]);
-            } else {
-                System.out.println("Invalid genre.Please try again");
             }
         }
     }
