@@ -66,6 +66,7 @@ public class BraceChecker {
         }
     }
 
+
     public void showError(char opened, char closed) {
         System.out.print("Error: opened " + opened + " but closed " + closed + " ");
     }
