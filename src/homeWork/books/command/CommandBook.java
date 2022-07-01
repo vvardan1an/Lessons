@@ -8,6 +8,7 @@ public interface CommandBook {
     int BY_GENRE_ALL_BOOKS = 4;
     int PRICE_RANGE = 5;
     int ADD_AUTHOR = 6;
+    int PRINT_ALL_AUTHORS = 7;
 
 
     static void showCommands() {
@@ -18,5 +19,6 @@ public interface CommandBook {
         System.out.println("Please enter " + BY_GENRE_ALL_BOOKS + " to print books by genre. ");
         System.out.println("Please enter " + PRICE_RANGE + " to print books by price range. ");
         System.out.println("Please enter " + ADD_AUTHOR + " to add author. ");
+        System.out.println("Please enter " + PRINT_ALL_AUTHORS + " to print all authors. ");
     }
 }

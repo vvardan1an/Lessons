@@ -44,6 +44,9 @@ public class BookDemo implements CommandBook {
                 case ADD_AUTHOR:
                     addAuthor();
                     break;
+                case PRINT_ALL_AUTHORS:
+                    authorStorage.print();
+                    break;
                 default:
                     System.out.println("Invalid command");
                     break;
@@ -58,17 +61,23 @@ public class BookDemo implements CommandBook {
         String surName = scannerBook.nextLine();
         System.out.println("Please input email.");
         String email = scannerBook.nextLine();
-        System.out.println("Please input gender gender. (MALE or FEMALE)");
+        System.out.println("Please input gender. (Male or Female)");
+        String gender = choseGender();
+
+        Author author = new Author(name, surName, email, gender);
+        authorStorage.add(author);
+        System.out.println("Author created !");
+    }
+
+    private static String choseGender() {
         String gender = scannerBook.nextLine();
-        if (gender.equals("MALE") || gender.equals("FEMALE")) {
-            Author author = new Author(name, surName, email, gender);
-            authorStorage.add(author);
-            System.out.println("Author created !");
+        if (gender.equals("Male") || gender.equals("Female")) {
+            System.out.print("Thanks.");
         } else {
-            System.out.println("Please correct gender.");
+            System.out.println("Please input correct gender Male or Female");
+            choseGender();
         }
-
-
+        return gender;
     }
 
 
@@ -120,9 +129,6 @@ public class BookDemo implements CommandBook {
                 bookStorage.add(book);
                 System.out.println("Thank you ! Book added . ");
             }
-
-
         }
     }
-
 }
