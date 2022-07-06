@@ -62,13 +62,9 @@ public class BookDemo implements CommandBook {
 
         System.out.println("Password: ");
         String password = scannerBook.nextLine();
-        boolean log;
 
-        if (login.equals("admin") && password.equals("123456")) {
-            isRunning = true;
-        } else {
-            System.out.println("Wrong password and/or login. ");
-            isRunning = false;
+        if (!(login.equals("admin")) && !(password.equals("123456"))) {
+            System.out.println("Wrong login and/or password. ");
             loginAdmin();
         }
     }
