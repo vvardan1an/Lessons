@@ -65,7 +65,7 @@ public class BookDemo implements CommandBook {
         boolean log;
 
         if (login.equals("admin") && password.equals("123456")) {
-            log = true;
+            isRunning = true;
         } else {
             System.out.println("Wrong password and/or login. ");
             loginAdmin();
