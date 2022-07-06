@@ -1,9 +1,6 @@
 package homeWork.books.storage;
 
-import homeWork.books.exception.AuthorNotFoundException;
 import homeWork.books.model.Author;
-
-import javax.naming.AuthenticationException;
 
 public class AuthorStorage {
 
@@ -53,11 +50,11 @@ public class AuthorStorage {
     }
 
 
-    public Author getAuthorByIndex(int authorIndex) throws AuthorNotFoundException {
+    public Author getAuthorByIndex(int authorIndex) {
         if(authorIndex >= 0 && authorIndex< size){
             return array[authorIndex];
         }
-       throw new AuthorNotFoundException("Author " + authorIndex + " does not exists.");
+        return null;
     }
 
 }
