@@ -1,6 +1,7 @@
 package homeWork.books;
 
 import homeWork.books.command.CommandBook;
+import homeWork.books.enums.AuthorGender;
 import homeWork.books.model.Author;
 import homeWork.books.model.Book;
 import homeWork.books.storage.AuthorStorage;
@@ -72,12 +73,16 @@ public class BookDemo implements CommandBook {
     private static void addAuthor() {
         System.out.println("Please input author name.");
         String name = scannerBook.nextLine();
+
         System.out.println("Please input author surname.");
         String surName = scannerBook.nextLine();
+
         System.out.println("Please input email.");
+
         String email = scannerBook.nextLine();
         System.out.println("Please input gender. (Male or Female)");
-        String gender = choseGender();
+
+        String gender=choseGender();
 
         Author author = new Author(name, surName, email, gender);
         authorStorage.add(author);
@@ -85,16 +90,16 @@ public class BookDemo implements CommandBook {
     }
 
     private static String choseGender() {
-        String gender = scannerBook.nextLine();
-        if (gender.equals("Male") || gender.equals("Female")) {
-            System.out.print("Thanks.");
-        } else {
-            System.out.println("Please input correct gender Male or Female");
+        AuthorGender authorGender = null;
+
+        try {
+            authorGender = AuthorGender.valueOf(scannerBook.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please input correct gender.");
             choseGender();
         }
-        return gender;
+        return null;
     }
-
 
     private static void printByGenre() {
         System.out.println("Please input book genre. ");
