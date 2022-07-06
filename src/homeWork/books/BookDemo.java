@@ -68,6 +68,7 @@ public class BookDemo implements CommandBook {
             isRunning = true;
         } else {
             System.out.println("Wrong password and/or login. ");
+            isRunning = false;
             loginAdmin();
         }
     }
