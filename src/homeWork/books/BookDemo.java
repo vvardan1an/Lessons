@@ -17,9 +17,9 @@ public class BookDemo implements CommandBook {
     private static boolean isRunning = true;
 
     public static void main(String[] args) {
-
+        loginAdmin();
         while (isRunning) {
-            loginAdmin();
+            CommandBook.showCommands();
             int command = Integer.parseInt(scannerBook.nextLine());
             switch (command) {
                 case EXIT:
@@ -61,9 +61,8 @@ public class BookDemo implements CommandBook {
         System.out.println("Password: ");
         String password = scannerBook.nextLine();
 
-        if(login.equals("admin") && password.equals("123456")){
-            CommandBook.showCommands();
-        }else{
+        if (login.equals("admin") && password.equals("123456")) {
+        } else {
             System.out.println("Wrong password and/or login. ");
             loginAdmin();
         }
@@ -123,26 +122,54 @@ public class BookDemo implements CommandBook {
         } else {
             authorStorage.print();
             System.out.println("Please chose author index.");
-            int authorIndex = Integer.parseInt(scannerBook.nextLine());
-            Author author = authorStorage.getAuthorByIndex(authorIndex);
-            if (author == null) {
-                System.out.println("Please correct index.");
-                addBook();
-            } else {
+
+            try {
+                int authorIndex = Integer.parseInt(scannerBook.nextLine());
+                Author author = authorStorage.getAuthorByIndex(authorIndex);
+
                 System.out.println("Please input book title. ");
                 String title = scannerBook.nextLine();
-                System.out.println("Please input book price. ");
-                double price = Double.parseDouble(scannerBook.nextLine());
+
+                double price = 0;
+                price = getPrice(price);
+
+
                 System.out.println("Please input book genre. ");
                 String genre = scannerBook.nextLine();
-                System.out.println("Please input book count. ");
-                int count = Integer.parseInt(scannerBook.nextLine());
+
+                int count = 0;
+                count = getCount(count);
 
 
                 Book book = new Book(title, author, price, count, genre);
                 bookStorage.add(book);
                 System.out.println("Thank you ! Book added . ");
+            } catch (AuthorNotFoundException e) {
+                System.out.println(e.getMessage());
+                addBook();
             }
         }
+    }
+
+    private static int getCount(int count) {
+        try {
+            System.out.println("Please input book count. ");
+            count = Integer.parseInt(scannerBook.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Please input correct count. ");
+            getCount(count);
+        }
+        return count;
+    }
+
+    private static double getPrice(double price) {
+        try {
+            System.out.println("Please input book price.");
+            price = Double.parseDouble(scannerBook.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Please input correct price.");
+            getPrice(price);
+        }
+        return price;
     }
 }

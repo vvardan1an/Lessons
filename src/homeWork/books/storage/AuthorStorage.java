@@ -1,5 +1,6 @@
 package homeWork.books.storage;
 
+import homeWork.books.AuthorNotFoundException;
 import homeWork.books.model.Author;
 
 public class AuthorStorage {
@@ -50,11 +51,11 @@ public class AuthorStorage {
     }
 
 
-    public Author getAuthorByIndex(int authorIndex) {
+    public Author getAuthorByIndex(int authorIndex) throws AuthorNotFoundException {
         if(authorIndex >= 0 && authorIndex< size){
             return array[authorIndex];
         }
-        return null;
+        throw new AuthorNotFoundException("Please input correct index.");
     }
 
 }
