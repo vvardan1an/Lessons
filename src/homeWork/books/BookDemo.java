@@ -58,7 +58,7 @@ public class BookDemo implements CommandBook {
         System.out.println("Login: ");
         String login = scannerBook.nextLine();
 
-        System.out.println("Password");
+        System.out.println("Password: ");
         String password = scannerBook.nextLine();
 
         if(login.equals("admin") && password.equals("123456")){
