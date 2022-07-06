@@ -82,7 +82,7 @@ public class BookDemo implements CommandBook {
         String email = scannerBook.nextLine();
         System.out.println("Please input gender. (Male or Female)");
 
-        String gender=choseGender();
+        String gender = choseGender();
 
         Author author = new Author(name, surName, email, gender);
         authorStorage.add(author);
@@ -90,15 +90,15 @@ public class BookDemo implements CommandBook {
     }
 
     private static String choseGender() {
-        AuthorGender authorGender = null;
 
+        String gender = null;
         try {
-            authorGender = AuthorGender.valueOf(scannerBook.nextLine());
+            gender = String.valueOf(AuthorGender.valueOf(scannerBook.nextLine()));
         } catch (IllegalArgumentException e) {
             System.out.println("Please input correct gender.");
             choseGender();
         }
-        return null;
+        return gender;
     }
 
     private static void printByGenre() {
