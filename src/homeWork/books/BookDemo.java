@@ -8,6 +8,7 @@ import homeWork.books.model.Book;
 import homeWork.books.storage.AuthorStorage;
 import homeWork.books.storage.BookStorage;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class BookDemo implements CommandBook {
@@ -102,14 +103,14 @@ public class BookDemo implements CommandBook {
     }
 
     private static AuthorGender choseGender() {
-        String  gender = scannerBook.nextLine();
-
-        if(!(gender.equals(AuthorGender.MALE.name()) || gender.equals(AuthorGender.FEMALE.name()))) {
-            System.out.println("Wrong!.Please try again.");
-            choseGender();
-            return null;
+        AuthorGender gender;
+        try {
+            gender = AuthorGender.valueOf(scannerBook.nextLine().toUpperCase());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Wrong. Please try again. ");
+            gender = choseGender();
         }
-            return AuthorGender.valueOf(gender);
+        return gender;
     }
 
     private static void printByGenre() {
@@ -161,7 +162,7 @@ public class BookDemo implements CommandBook {
                 Book book = new Book(title, author, price, count, genre);
                 bookStorage.add(book);
                 System.out.println("Thank you ! Book added . ");
-            } catch (AuthorNotFoundException e) {
+            } catch (NumberFormatException | AuthorNotFoundException e) {
                 System.out.println(e.getMessage());
                 addBook();
             }
