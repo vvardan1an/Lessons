@@ -2,6 +2,7 @@ package homeWork.books;
 
 import homeWork.books.command.CommandBook;
 import homeWork.books.enums.AuthorGender;
+import homeWork.books.exception.AuthorNotFoundException;
 import homeWork.books.model.Author;
 import homeWork.books.model.Book;
 import homeWork.books.storage.AuthorStorage;
@@ -98,7 +99,7 @@ public class BookDemo implements CommandBook {
             System.out.println("Please input correct gender.");
             choseGender();
         }
-        return gender;
+        return String.valueOf(AuthorGender.valueOf(gender));
     }
 
     private static void printByGenre() {

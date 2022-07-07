@@ -1,7 +1,6 @@
 package homeWork.books.exception;
 
 public class AuthorNotFoundException extends Exception {
-
     public AuthorNotFoundException() {
     }
 

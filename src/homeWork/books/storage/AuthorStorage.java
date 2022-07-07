@@ -1,6 +1,6 @@
 package homeWork.books.storage;
 
-import homeWork.books.AuthorNotFoundException;
+import homeWork.books.exception.AuthorNotFoundException;
 import homeWork.books.model.Author;
 
 public class AuthorStorage {
