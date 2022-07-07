@@ -20,11 +20,12 @@ public class BookDemo implements CommandBook {
 
     public static void main(String[] args) {
 
-        loginAdmin();
+        //loginAdmin();
 
         while (isRunning) {
             CommandBook.showCommands();
-            int command = Integer.parseInt(scannerBook.nextLine());
+            int command = getCommand();
+
             switch (command) {
                 case EXIT:
                     isRunning = false;
@@ -58,6 +59,17 @@ public class BookDemo implements CommandBook {
         }
     }
 
+    private static int getCommand() {
+        int command = 0;
+        try {
+            command = Integer.parseInt(scannerBook.nextLine());
+        } catch (NumberFormatException exception) {
+            System.out.println("Please input correct command.");
+            getCommand();
+        }
+        return command;
+    }
+
     private static void loginAdmin() {
         System.out.println("Login: ");
         String login = scannerBook.nextLine();
@@ -79,27 +91,25 @@ public class BookDemo implements CommandBook {
         String surName = scannerBook.nextLine();
 
         System.out.println("Please input email.");
-
         String email = scannerBook.nextLine();
-        System.out.println("Please input gender. (Male or Female)");
 
-        String gender = choseGender();
+        System.out.println("Please input gender. (Male or Female)");
+        AuthorGender gender = choseGender();
 
         Author author = new Author(name, surName, email, gender);
         authorStorage.add(author);
         System.out.println("Author created !");
     }
 
-    private static String choseGender() {
+    private static AuthorGender choseGender() {
+        String  gender = scannerBook.nextLine();
 
-        String gender = null;
-        try {
-            gender = String.valueOf(AuthorGender.valueOf(scannerBook.nextLine()));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Please input correct gender.");
+        if(!(gender.equals(AuthorGender.MALE.name()) || gender.equals(AuthorGender.FEMALE.name()))) {
+            System.out.println("Wrong!.Please try again.");
             choseGender();
+            return null;
         }
-        return String.valueOf(AuthorGender.valueOf(gender));
+            return AuthorGender.valueOf(gender);
     }
 
     private static void printByGenre() {

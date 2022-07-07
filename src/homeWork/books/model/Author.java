@@ -1,5 +1,7 @@
 package homeWork.books.model;
 
+import homeWork.books.enums.AuthorGender;
+
 import java.util.Objects;
 
 public class Author {
@@ -7,9 +9,9 @@ public class Author {
     private String name;
     private String surName;
     private String email;
-    private String gender;
+    private AuthorGender gender;
 
-    public Author(String name, String surName, String email, String gender) {
+    public Author(String name, String surName, String email, AuthorGender gender) {
         this.name = name;
         this.surName = surName;
         this.email = email;
@@ -43,12 +45,12 @@ public class Author {
         this.email = email;
     }
 
-    public String getGender() {
+    public AuthorGender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-            this.gender = gender;
+    public void setGender(AuthorGender gender) {
+        this.gender = gender;
     }
 
     @Override
