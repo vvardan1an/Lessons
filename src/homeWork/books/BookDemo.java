@@ -2,13 +2,15 @@ package homeWork.books;
 
 import homeWork.books.command.CommandBook;
 import homeWork.books.enums.AuthorGender;
+import homeWork.books.enums.Role;
 import homeWork.books.exception.AuthorNotFoundException;
 import homeWork.books.model.Author;
 import homeWork.books.model.Book;
+import homeWork.books.model.User;
 import homeWork.books.storage.AuthorStorage;
 import homeWork.books.storage.BookStorage;
+import homeWork.books.storage.UserStorage;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class BookDemo implements CommandBook {
@@ -16,19 +18,137 @@ public class BookDemo implements CommandBook {
     private static final Scanner scannerBook = new Scanner(System.in);
     private static final BookStorage bookStorage = new BookStorage();
     private static final AuthorStorage authorStorage = new AuthorStorage();
+    private static final UserStorage userStorage = new UserStorage();
 
     private static boolean isRunning = true;
 
     public static void main(String[] args) {
 
-        //loginAdmin();
+        userStorage.add(new User("admin", "admin", "admin@gmail.com", "123456", Role.ADMIN));
 
+        startProgram();
+    }
+
+    private static void startProgram() {
+        boolean isRunning = true;
+
+        while (isRunning) {
+            CommandBook.printLoginCommands();
+
+            int command = getCommand();
+
+            switch (command) {
+                case EXIT:
+                    isRunning = false;
+                    break;
+                case LOGIN:
+                    login();
+                    break;
+                case REGISTER:
+                    register();
+                    break;
+                default:
+                    System.out.println("Invalid command , please try again.");
+                    break;
+            }
+        }
+    }
+
+    private static void login() {
+        System.out.println("Please enter email.");
+        String login = scannerBook.nextLine();
+
+        System.out.println("Please enter password");
+        String password = scannerBook.nextLine();
+
+        String[] loginData = {login, password};
+
+        User user = userStorage.getUserByEmail(loginData[0]);
+        if (user == null) {
+            System.out.println("User does not exists.");
+        } else {
+            if (!user.getPassword().equals(loginData[1])) {
+                System.out.println("Password is wrong !");
+            } else {
+                if (user.getRole() == Role.ADMIN) {
+                    loginAdmin();
+                } else if (user.getRole() == Role.USER) {
+                    loginUser();
+                }
+            }
+        }
+    }
+
+    private static void register() {
+        User user = new User();
+
+        System.out.println("Please input name.");
+        user.setName(scannerBook.nextLine());
+
+        System.out.println("Please input surname.");
+        user.setSurName(scannerBook.nextLine());
+
+        System.out.println("Please input email.");
+        user.setEmail(scannerBook.nextLine());
+
+        System.out.println("Please input password.");
+        user.setPassword(scannerBook.nextLine());
+
+        user.setRole(Role.USER);
+        if (userStorage.getUserByEmail(user.getEmail()) == null) {
+
+            validateRegister(user);
+            userStorage.add(user);
+
+            System.out.println("Thanks " + user.getName() + " You're registered.");
+
+        } else {
+            System.out.println("User with " + user.getEmail() + " already exists.");
+        }
+    }
+
+    private static void validateRegister(User user) {
+
+        if (user.getName().equals("") || user.getSurName().equals("") || user.getEmail().equals("")
+                || user.getPassword().equals("")) {
+            System.out.println("Please input correct name/surname/email/password.");
+            startProgram();
+        }
+    }
+
+    private static void loginUser() {
+        while (isRunning) {
+            CommandBook.userCommands();
+            int command = getCommand();
+
+            switch (command) {
+                case LOGOUT:
+                    isRunning = false;
+                    System.out.println("EXIT");
+                    break;
+                case ALL_BOOKS:
+                    bookStorage.print();
+                    break;
+                case BY_AUTHOR_ALL_BOOKS:
+                    printByAuthorName();
+                    break;
+                case BY_GENRE_ALL_BOOKS:
+                    printByGenre();
+                    break;
+                default:
+                    System.out.println("Invalid command");
+                    break;
+            }
+        }
+    }
+
+    private static void loginAdmin() {
         while (isRunning) {
             CommandBook.showCommands();
             int command = getCommand();
 
             switch (command) {
-                case EXIT:
+                case LOGOUT:
                     isRunning = false;
                     System.out.println("EXIT");
                     break;
@@ -69,19 +189,6 @@ public class BookDemo implements CommandBook {
             getCommand();
         }
         return command;
-    }
-
-    private static void loginAdmin() {
-        System.out.println("Login: ");
-        String login = scannerBook.nextLine();
-
-        System.out.println("Password: ");
-        String password = scannerBook.nextLine();
-
-        if (!(login.equals("admin")) || !(password.equals("123456"))) {
-            System.out.println("Wrong login and/or password. ");
-            loginAdmin();
-        }
     }
 
     private static void addAuthor() {
