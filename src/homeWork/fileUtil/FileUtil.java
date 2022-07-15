@@ -1,7 +1,5 @@
 package homeWork.fileUtil;
 
-import jdk.nashorn.internal.runtime.PropertyMap;
-
 import java.io.*;
 import java.util.Objects;
 import java.util.Scanner;
@@ -139,9 +137,9 @@ public class FileUtil {
         File file = new File(path, fileName);
 
         if (file.createNewFile()) {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
-            bufferedWriter.write(content);
-            bufferedWriter.close();
+            try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file.getAbsolutePath()))) {
+                bufferedWriter.write(content);
+            }
         }
     }
 }
