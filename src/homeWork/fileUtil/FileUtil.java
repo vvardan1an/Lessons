@@ -12,29 +12,21 @@ public class FileUtil {
 
     public static void main(String[] args) {
         File myFile = new File("C:\\Users\\user\\IdeaProjects\\Lessons\\src\\Examples\\testsRandom");
-        // System.out.println(fileSearch());
-//        try {
-//            contentSearch();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            findLines();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        printSizeOfPackage();
-//        try {
-//            createFileWithContent();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        //System.out.println(fileSearch());
+        try {
+            //contentSearch();
+            findLines();
+            //createFileWithContent();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
     // 1 - path թե որ ֆոլդերում ենք փնտրելու
     // 2 - fileName - ֆայլի անունը, որը փնտրում ենք։
     //Որպես արդյունք պտի ծրագիրը տպի true եթե կա էդ ֆայլը էդ պապկի մեջ, false եթե չկա։
+
     static boolean fileSearch() {
 
         System.out.println("Please input PATH name.");
@@ -43,9 +35,8 @@ public class FileUtil {
         System.out.println("Please input file name.");
         String name = scanner.nextLine();
 
-        String pathAndFileName = path + name;
 
-        File file = new File(pathAndFileName);
+        File file = new File(path, name);
         return file.exists();
     }
 
@@ -54,6 +45,7 @@ public class FileUtil {
     // 2 - keyword - ինչ որ բառ
     // Մեթոդը պետք է նշված path-ում գտնի բոլոր .txt ֆայլերը, և իրենց մեջ փնտրի
     // մեր տված keyword-ը, եթե գտնի, պետք է տպի տվյալ ֆայլի անունը։
+
     static void contentSearch() throws IOException {
 
         System.out.println("Please input PATH name.");
@@ -84,6 +76,7 @@ public class FileUtil {
     // 1 - txtPath txt ֆայլի փաթը
     // 2 - keyword - ինչ որ բառ
     // տալու ենք txt ֆայլի տեղը, ու ինչ որ բառ, ինքը տպելու է էն տողերը, որտեղ գտնի էդ բառը։
+
     static void findLines() throws IOException {
 
         System.out.println("Please input txt file path.");
@@ -94,11 +87,11 @@ public class FileUtil {
 
         File file = new File(txtPath);
         if (file.isFile()) {
-            BufferedReader bf = new BufferedReader(new FileReader(file.getAbsolutePath()));
-            while (bf.read() != -1) {
-                String returnLine = bf.readLine();
-                if (returnLine.contains(keyword)) {
-                    System.out.println(returnLine);
+            String lines = "";
+            BufferedReader bfReader = new BufferedReader(new FileReader(file.getAbsolutePath()));
+            while ((lines = bfReader.readLine()) != null){
+                if (lines.contains(keyword)) {
+                    System.out.println(lines);
                 }
             }
         }
@@ -108,6 +101,7 @@ public class FileUtil {
     //այս մեթոդը պետք է սքաններով վերցնի մեկ string.
     // 1 - path թե որ ֆոլդերի չափն ենք ուզում հաշվել
     // ֆոլդերի բոլոր ֆայլերի չափսերը գումարում ենք իրար, ու տպում
+
     static void printSizeOfPackage() {
 
         System.out.println("Please input path folder.");
@@ -129,6 +123,7 @@ public class FileUtil {
     // 2 - fileName ֆայլի անունը, թե ինչ անունով ֆայլ է սարքելու
     // 3 - content ֆայլի պարունակությունը։ Այսինքն ստեղծված ֆայլի մեջ ինչ է գրելու
     // որպես արդյունք պապկի մեջ սարքելու է նոր ֆայլ, իրա մեջ էլ լինելու է content-ով տվածը
+
     static void createFileWithContent() throws IOException {
 
         System.out.println("Enter the path where you want to create the file.");
@@ -142,7 +137,7 @@ public class FileUtil {
 
         File file = new File(path, fileName);
 
-        if(file.createNewFile()){
+        if (file.createNewFile()) {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
             bufferedWriter.write(content);
             bufferedWriter.close();
