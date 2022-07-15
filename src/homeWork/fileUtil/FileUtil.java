@@ -15,11 +15,12 @@ public class FileUtil {
         //System.out.println(fileSearch());
         try {
             //contentSearch();
-            findLines();
-            //createFileWithContent();
+            //findLines();
+            createFileWithContent();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //printSizeOfPackage();
     }
 
     //այս մեթոդը պետք է սքաններով վերցնի երկու string.
@@ -89,7 +90,7 @@ public class FileUtil {
         if (file.isFile()) {
             String lines = "";
             BufferedReader bfReader = new BufferedReader(new FileReader(file.getAbsolutePath()));
-            while ((lines = bfReader.readLine()) != null){
+            while ((lines = bfReader.readLine()) != null) {
                 if (lines.contains(keyword)) {
                     System.out.println(lines);
                 }
