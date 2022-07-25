@@ -26,7 +26,7 @@ public class MapExample {
         printAllMembers(members);
     }
 
-    //Ունենք FootballTeamMember-ի լիստ, պետք է ստանանք HashMap որտեղ կեյ-ը կլինի խաղացողի համարը, իսկ վելյուն իրա անունը։
+    //Ունենք FootballTeamMember-ի լիստ, պետք է ստանանք HashMap որտեղ կեյ-ը կլինի խաղացողի համարը, իսկ վելյուն իրա անունը
     static Map<Integer, String> createFootballTeam(List<FootballTeamMember> members) {
 
         HashMap <Integer,String> hashMap = new HashMap<>();
