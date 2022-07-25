@@ -14,13 +14,16 @@ public class MapExample {
         fbTime.add(new FootballTeamMember(1,"Poxos Petrosyan"));
         fbTime.add(new FootballTeamMember(8,"Armen Vardanyan"));
         fbTime.add(new FootballTeamMember(23,"Petros Poxosyan"));
-        System.out.println(createFootballTeam(fbTime));
+        //System.out.println(createFootballTeam(fbTime));
 
         HashMap <Integer,String> members= new HashMap<>();
         for (FootballTeamMember fb : fbTime) {
-            removeFromMap(members,7);
+            members.put(fb.getNumber(),fb.getName());
         }
-        System.out.println(fbTime);
+        //removeFromMap(members,8);
+        //System.out.println(members);
+        //printAllMemberNames(members);
+        printAllMembers(members);
     }
 
     //Ունենք FootballTeamMember-ի լիստ, պետք է ստանանք HashMap որտեղ կեյ-ը կլինի խաղացողի համարը, իսկ վելյուն իրա անունը։
@@ -44,14 +47,16 @@ public class MapExample {
 
     //Մեթոդով տպելու ենք միայն անունները
     static void printAllMemberNames(Map<Integer, String> memberMap) {
-
+        System.out.println(memberMap.values());
     }
 
     //Մեթոդով տպելու ենք թե համարը, թե խաղացողի անունը հետյալ ձև՝
     // 11 - Poxos Poxosyan
     // 12 - Petros Petrosyan
     static void printAllMembers(Map<Integer, String> memberMap) {
-
+        for (Integer v: memberMap.keySet()){
+            System.out.println(v.toString() + " - " + memberMap.get(v));
+        }
     }
 
 }
