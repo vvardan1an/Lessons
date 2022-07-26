@@ -55,7 +55,7 @@ public class MapExample {
     // 12 - Petros Petrosyan
     static void printAllMembers(Map<Integer, String> memberMap) {
         for (Integer v: memberMap.keySet()){
-            System.out.println(v.toString() + " - " + memberMap.get(v));
+            System.out.println(v + " - " + memberMap.get(v));
         }
     }
 
