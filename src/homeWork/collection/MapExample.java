@@ -1,9 +1,6 @@
 package homeWork.collection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MapExample {
 
@@ -23,7 +20,7 @@ public class MapExample {
         fbTime.add(new FootballTeamMember(9,"Petros Poxosyan"));
         //System.out.println(createFootballTeam(fbTime));
 
-        HashMap <Integer,String> members= new HashMap<>();
+        TreeMap <Integer,String> members= new TreeMap<>();
         for (FootballTeamMember fb : fbTime) {
             members.put(fb.getNumber(),fb.getName());
         }
@@ -58,7 +55,7 @@ public class MapExample {
     // 12 - Petros Petrosyan
     static void printAllMembers(Map<Integer, String> memberMap) {
         for (Integer v: memberMap.keySet()){
-            System.out.println(v.toString() + " - " + memberMap.get(v));
+            System.out.println(v + " - " + memberMap.get(v));
         }
     }
 
