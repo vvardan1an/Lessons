@@ -23,7 +23,8 @@ public class CollectionExample {
         stringList.add("dope");
         stringList.add("gender");
         //System.out.println(removeById(stringList, 1));
-        System.out.println(listToSet(stringList));
+        //System.out.println(listToSet(stringList));
+        printFirstFive(stringList);
 
         List<Integer> integerList = new ArrayList<>();
         integerList.add(5);
@@ -69,14 +70,7 @@ public class CollectionExample {
 
     // մեթոդը գրել այնպես, որ ինչ մեծությամբ լիստ էլ տանք էս մեթոդին, ինքը տպե մենակ սկզբի 5 հատը։
     static void printFirstFive(List<String> list) {
-        if (!list.isEmpty()) {
-            for (String s : list) {
-                if (list.size() > 5 && Objects.equals(s, list.get(5))) {
-                    break;
-                }
-                System.out.print(s + " ");
-            }
-        }
+        System.out.println(list.subList(0,5));
     }
 
     // մեթոդը գրել այնպես, որ ինչ list տանք վերադարձնի թե քանի էլեմենտ կա էդ լիստ-ի մեջ

@@ -12,18 +12,25 @@ public class MapExample {
         fbTime.add(new FootballTeamMember(7,"Poxos Poxosyan"));
         fbTime.add(new FootballTeamMember(10,"Martiros Martirosyan"));
         fbTime.add(new FootballTeamMember(1,"Poxos Petrosyan"));
-        fbTime.add(new FootballTeamMember(8,"Armen Vardanyan"));
-        fbTime.add(new FootballTeamMember(23,"Petros Poxosyan"));
+        fbTime.add(new FootballTeamMember(6,"Armen Vardanyan"));
+        fbTime.add(new FootballTeamMember(12,"Tigran Adamyan"));
+        fbTime.add(new FootballTeamMember(11,"Armen Arshakyan"));
+        fbTime.add(new FootballTeamMember(8,"Davit Poxosyan"));
+        fbTime.add(new FootballTeamMember(3,"Gagik Muradyan"));
+        fbTime.add(new FootballTeamMember(5,"Sergey Stepanyan"));
+        fbTime.add(new FootballTeamMember(10,"Vazgen Aramyan"));
+        fbTime.add(new FootballTeamMember(4,"Aram Kirakosyan"));
+        fbTime.add(new FootballTeamMember(9,"Petros Poxosyan"));
         //System.out.println(createFootballTeam(fbTime));
 
         HashMap <Integer,String> members= new HashMap<>();
         for (FootballTeamMember fb : fbTime) {
             members.put(fb.getNumber(),fb.getName());
         }
-        //removeFromMap(members,8);
-        //System.out.println(members);
+        removeFromMap(members,4);
+        System.out.println(members);
         //printAllMemberNames(members);
-        printAllMembers(members);
+        //printAllMembers(members);
     }
 
     //Ունենք FootballTeamMember-ի լիստ, պետք է ստանանք HashMap որտեղ կեյ-ը կլինի խաղացողի համարը, իսկ վելյուն իրա անունը
@@ -38,11 +45,7 @@ public class MapExample {
 
     //Մեթոդի մեջ պետք է տրված մապ-ից ջնջենք removedNumber համարը եթե կա, ու վերադարձնենք true, եթե չկա վերադարձնենք false
     static boolean removeFromMap(Map<Integer, String> memberMap, Integer removedNumber) {
-        if(memberMap.containsKey(removedNumber)){
-            memberMap.remove(removedNumber);
-            return true;
-        }
-        return false;
+        return Boolean.parseBoolean(memberMap.remove(removedNumber));
     }
 
     //Մեթոդով տպելու ենք միայն անունները
