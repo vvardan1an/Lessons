@@ -45,7 +45,7 @@ public class MapExample {
         return Boolean.parseBoolean(memberMap.remove(removedNumber));
     }
 
-    //Մեթոդով տպելու ենք միայն անունները
+    //Մեթոդով տպելու ենք միայն անունները.
     static void printAllMemberNames(Map<Integer, String> memberMap) {
         System.out.println(memberMap.values());
     }

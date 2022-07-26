@@ -45,7 +45,7 @@ public class CollectionExample {
         return new ArrayList<>(Arrays.asList(values));
     }
 
-    //մեթոդը գրել այնպես, որ կանչենք ու տանք ինչ որ լիստ, ու ինդեքս, ինքը ջնջե էդ ինդեքսի տակ գտնվող էլեմենտը, ու վերադարձնե նույն լիստը, առանց էդ էլեմենտի։
+    //մեթոդը գրել այնպես, որ կանչենք ու տանք ինչ որ լիստ, ու ինդեքս., ինքը ջնջե էդ ինդեքսի տակ գտնվող էլեմենտը, ու վերադարձնե նույն լիստը, առանց էդ էլեմենտի։
     static List<String> removeById(List<String> list, int index) {
         //List<String> stringList = new ArrayList<>(list);
         list.remove(index);
